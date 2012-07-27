@@ -11,13 +11,23 @@ Requirements
 ------------
  * PHP 5.3+
 
+Installation
+------------
+Install `FtpPhp` through [Composer](http://getcomposer.org/doc/00-intro.md).
+Just specify `rjkip/ftp-php` as a dependency.
+
 Usage
 -----
 Opens an FTP connection to the specified host:
 
 ```php
 <?php
-$ftp = new FtpPhp\FtpClient;
+require "vendor/autoload.php";
+
+use FtpPhp\FtpClient;
+use FtpPhp\FtpException;
+
+$ftp = new FtpClient;
 $ftp->connect($host);
 ```
 
@@ -30,7 +40,7 @@ $ftp->login($username, $password);
 Upload the file
 ```php
 <?php
-$ftp->put($destination_file, $source_file, FTP_BINARY);
+$ftp->put($destination_file, $source_file, FtpClient::BINARY);
 ```
 
 Close the FTP stream
@@ -43,12 +53,12 @@ Ftp throws exception if operation failed. So you can simply do following:
 ```php
 <?php
 try {
-	$ftp = new FtpPhp\FtpClient;
+	$ftp = new FtpClient;
 	$ftp->connect($host);
 	$ftp->login($username, $password);
-	$ftp->put($destination_file, $source_file, FTP_BINARY);
+	$ftp->put($destination_file, $source_file, FtpClient::BINARY);
 
-} catch (FtpPhp\FtpException $e) {
+} catch (FtpException $e) {
 	echo 'Error: ', $e->getMessage();
 }
 ```
