@@ -37,6 +37,12 @@ Login with username and password
 $ftp->login($username, $password);
 ```
 
+You can also pass a URI to the constructor, as such:
+```php
+<?php
+$ftp = new FtpClient("ftp://user:password@host/path");
+```
+
 Upload the file
 ```php
 <?php
@@ -46,6 +52,7 @@ $ftp->put($destination_file, $source_file, FtpClient::BINARY);
 Close the FTP stream
 ```php
 <?php
+# Connection is also closed when `$ftp` goes out of scope.
 $ftp->close();
 ```
 
