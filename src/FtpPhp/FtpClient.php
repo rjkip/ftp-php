@@ -1,5 +1,7 @@
 <?php
 
+namespace FtpPhp;
+
 /**
  * FTP - access to an FTP server.
  *
@@ -224,10 +226,4 @@ class Ftp
 		}
 	}
 
-}
-
-
-
-class FtpException extends Exception
-{
 }
