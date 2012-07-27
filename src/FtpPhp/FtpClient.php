@@ -11,7 +11,7 @@ namespace FtpPhp;
  * @link       http://phpfashion.com/
  * @version    1.0
  */
-class Ftp
+class FtpClient
 {
 	/**#@+ FTP constant alias */
 	const ASCII = "FTP_ASCII";
