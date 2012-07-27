@@ -1,64 +1,62 @@
 FTP for PHP (c) David Grudl, 2008 (http://davidgrudl.com)
 
-
 Introduction
 ------------
-
 FTP for PHP is a very small and easy-to-use library for accessing FTP servers.
 
-
-Project at GoogleCode: http://ftp-php.googlecode.com
-My PHP blog: http://phpfashion.com
-
+David Grudl's project at GoogleCode: http://ftp-php.googlecode.com  
+David Grudl's PHP blog: http://phpfashion.com
 
 Requirements
 ------------
-- PHP (version 5 or better)
-
+ * PHP 5.3+
 
 Usage
 -----
-
 Opens an FTP connection to the specified host:
 
-	$ftp = new Ftp;
-	$ftp->connect($host);
+```php
+<?php
+$ftp = new Ftp;
+$ftp->connect($host);
+```
 
 Login with username and password
-
-	$ftp->login($username, $password);
+```php
+<?php
+$ftp->login($username, $password);
+```
 
 Upload the file
-
-	$ftp->put($destination_file, $source_file, FTP_BINARY);
+```php
+<?php
+$ftp->put($destination_file, $source_file, FTP_BINARY);
+```
 
 Close the FTP stream
-
-	$ftp->close();
-	// or simply unset($ftp);
+```php
+<?php
+$ftp->close();
+```
 
 Ftp throws exception if operation failed. So you can simply do following:
+```php
+<?php
+try {
+	$ftp = new Ftp;
+	$ftp->connect($host);
+	$ftp->login($username, $password);
+	$ftp->put($destination_file, $source_file, FTP_BINARY);
 
-	try {
-		$ftp = new Ftp;
-		$ftp->connect($host);
-		$ftp->login($username, $password);
-		$ftp->put($destination_file, $source_file, FTP_BINARY);
-
-	} catch (FtpException $e) {
-		echo 'Error: ', $e->getMessage();
-	}
+} catch (FtpException $e) {
+	echo 'Error: ', $e->getMessage();
+}
+```
 
 On the other hand, if you'd like the possible exception quietly catch, call methods with the prefix 'try':
+```php
+<?php
+$ftp->tryDelete($destination_file);
+```
 
-	$ftp->tryDelete($destination_file);
-
-When the connection is accidentally interrupted, you can re-establish it using method $ftp->reconnect().
-
-
-Files
------
-readme.txt        - This file.
-license.txt       - The license for this software (New BSD License).
-ftp.class.php     - The core Ftp class source.
-example.php       - Example.
+When the connection is accidentally interrupted, you can re-establish it using method `$ftp->reconnect()`.
