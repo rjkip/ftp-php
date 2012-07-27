@@ -162,7 +162,9 @@ class FtpClient
 	 */
 	public function fileExists($file)
 	{
-		return is_array($this->nlist($file));
+		$files = $this->nlist($file);
+		
+		return is_array($files) && count($files) > 0;
 	}
 
 
