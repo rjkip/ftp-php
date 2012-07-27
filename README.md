@@ -17,7 +17,7 @@ Opens an FTP connection to the specified host:
 
 ```php
 <?php
-$ftp = new Ftp;
+$ftp = new FtpPhp\FtpClient;
 $ftp->connect($host);
 ```
 
@@ -43,12 +43,12 @@ Ftp throws exception if operation failed. So you can simply do following:
 ```php
 <?php
 try {
-	$ftp = new Ftp;
+	$ftp = new FtpPhp\FtpClient;
 	$ftp->connect($host);
 	$ftp->login($username, $password);
 	$ftp->put($destination_file, $source_file, FTP_BINARY);
 
-} catch (FtpException $e) {
+} catch (FtpPhp\FtpException $e) {
 	echo 'Error: ', $e->getMessage();
 }
 ```
