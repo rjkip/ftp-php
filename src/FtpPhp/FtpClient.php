@@ -163,7 +163,7 @@ class FtpClient
 	public function fileExists($file)
 	{
 		$files = $this->nlist($file);
-		
+
 		return is_array($files) && count($files) > 0;
 	}
 
@@ -225,6 +225,16 @@ class FtpClient
 				}
 			}
 			$this->rmdir($path);
+		}
+	}
+
+	/**
+	 * Close the FTP connection when the variable is garbage collected or the script ends.
+	 */
+	public function __destruct()
+	{
+		if (is_resource($this->resource)) {
+			ftp_close($this->resource);
 		}
 	}
 
