@@ -35,6 +35,7 @@ class FtpClient
 		'nbfput' => 'nb_fput',
 		'nbget' => 'nb_get',
 		'nbput' => 'nb_put',
+	    'filelist' => 'nlist',
 	);
 
 	/** @var resource */
@@ -83,7 +84,6 @@ class FtpClient
 		$silent = strncmp($name, 'try', 3) === 0;
 		$func = $silent ? substr($name, 3) : $name;
 		$func = 'ftp_' . (isset(self::$aliases[$func]) ? self::$aliases[$func] : $func);
-
 		if (!function_exists($func)) {
 			throw new Exception("Call to undefined method Ftp::$name().");
 		}
