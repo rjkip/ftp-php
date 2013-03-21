@@ -43,6 +43,14 @@ You can also pass a URI to the constructor, as such:
 $ftp = new FtpClient("ftp://user:password@host/path");
 ```
 
+```php
+<?php
+$arr = $ftp->nlist();
+foreach ($arr as $value) {
+    echo $value.PHP_EOL;
+}
+```
+
 Upload the file
 ```php
 <?php
