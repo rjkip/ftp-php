@@ -35,7 +35,7 @@ class FtpClient
 		'nbfput' => 'nb_fput',
 		'nbget' => 'nb_get',
 		'nbput' => 'nb_put',
-	    	'nlist' => 'nlist',
+		'nlist' => 'nlist',
 	);
 
 	/** @var resource */
