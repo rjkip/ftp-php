@@ -2,6 +2,8 @@
 
 namespace FtpPhp;
 
+use \Exception;
+
 /**
  * FTP - access to an FTP server.
  *
