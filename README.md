@@ -85,3 +85,11 @@ $ftp->tryDelete($destination_file);
 ```
 
 When the connection is accidentally interrupted, you can re-establish it using method `$ftp->reconnect()`.
+
+Changelog
+---------
+
+### v1.1.0 - 2014-01-13
+ * Introducing a base exception class for all FtpPhp exceptions. This shouldn't break any of your exception handling, unless you rely on `FtpException` directly extending `\Exception`.
+ * All classes comply largely to PSR-2.
+ * Updated docblocks to satisfy PhpStorm.
