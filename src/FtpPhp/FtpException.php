@@ -2,6 +2,6 @@
 
 namespace FtpPhp;
 
-class FtpException extends \Exception
+class FtpException extends Exception
 {
 }
