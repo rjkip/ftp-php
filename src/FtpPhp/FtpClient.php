@@ -48,9 +48,9 @@ class FtpClient
 	private $errorMsg;
 
 
-
 	/**
-	 * @param  string  URL ftp://...
+	 * @param string $url E.g. ftp://...
+	 * @throws Exception
 	 */
 	public function __construct($url = NULL)
 	{
@@ -72,8 +72,8 @@ class FtpClient
 
 	/**
 	 * Magic method (do not call directly).
-	 * @param  string  method name
-	 * @param  array   arguments
+	 * @param  string $name Method name
+	 * @param  array $args Arguments
 	 * @return mixed
 	 * @throws Exception
 	 * @throws FtpException
@@ -134,6 +134,9 @@ class FtpClient
 
 	/**
 	 * Internal error handler. Do not call directly.
+	 *
+	 * @param int    $code
+	 * @param string $message
 	 */
 	public function _errorHandler($code, $message)
 	{
@@ -144,7 +147,6 @@ class FtpClient
 
 	/**
 	 * Reconnects to FTP server.
-	 * @return void
 	 */
 	public function reconnect()
 	{
@@ -158,7 +160,7 @@ class FtpClient
 
 	/**
 	 * Checks if file or directory exists.
-	 * @param  string
+	 * @param  string $file
 	 * @return bool
 	 */
 	public function fileExists($file)
@@ -172,7 +174,7 @@ class FtpClient
 
 	/**
 	 * Checks if directory exists.
-	 * @param  string
+	 * @param  string $dir
 	 * @return bool
 	 */
 	public function isDir($dir)
@@ -190,8 +192,9 @@ class FtpClient
 
 	/**
 	 * Recursive creates directories.
-	 * @param  string
+	 * @param  string $dir
 	 * @return void
+	 * @throws FtpException
 	 */
 	public function mkDirRecursive($dir)
 	{
@@ -214,8 +217,7 @@ class FtpClient
 
 	/**
 	 * Recursive deletes path.
-	 * @param  string
-	 * @return void
+	 * @param  string $path
 	 */
 	public function deleteRecursive($path)
 	{
